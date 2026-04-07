@@ -17,6 +17,7 @@ package-lock.yml
 # Environment
 .env
 
-# Data (downloaded at runtime)
-data/
+# Data
+data/administrative_boundary/
+data/mt_city/*.csv
 *.duckdb

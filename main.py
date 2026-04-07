@@ -10,7 +10,7 @@ import logging
 from dbt.cli.main import dbtRunner
 
 from pipelines.administrative_boundary import download_administrative_boundary
-from pipelines.mt_city import download_mt_city
+from pipelines.mt_city import extract_mt_city
 
 logger = logging.getLogger("pipelines")
 
@@ -38,7 +38,7 @@ def main():
 
     # 2. 市区町村マスタ (アドレス・ベース・レジストリ)
     logger.info("2/3: mt_city (市区町村マスタ)")
-    download_mt_city("data/mt_city")
+    extract_mt_city("data/mt_city")
 
     # 3. dbt ビルド
     logger.info("3/3: dbt build")
