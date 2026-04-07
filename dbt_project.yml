@@ -1,0 +1,18 @@
+name: "nlftp"
+version: "1.0.0"
+
+profile: "nlftp"
+
+model-paths: ["models"]
+macro-paths: ["macros", "shared/macros"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  nlftp:
+    +database: nlftp
+    +materialized: view
+    boundary:
+      raw:
+        +materialized: table
+      stg:
+        +materialized: table
