@@ -1,5 +1,4 @@
 name = "nlftp"
-catalog = "sqlite"
 command = "python main.py"
 
 [targets.default]
