@@ -20,4 +20,5 @@ package-lock.yml
 # Data
 data/administrative_boundary/
 data/mt_city/*.csv
+data/future_population/
 *.duckdb

@@ -16,3 +16,8 @@ models:
         +materialized: table
       stg:
         +materialized: table
+    population:
+      raw:
+        +materialized: table
+      stg:
+        +materialized: table
