@@ -3,7 +3,8 @@
 1. administrative_boundary: 行政区域データ取得 (N03)
 2. mt_city:                 市区町村マスタ取得 (ABR)
 3. future_population:       将来推計人口メッシュ取得 (1kmメッシュ R6推計)
-4. dbt:                     dbt ビルド
+4. railway:                 鉄道データ取得 (N02 駅・路線)
+5. dbt:                     dbt ビルド
 """
 
 import logging
@@ -13,6 +14,7 @@ from dbt.cli.main import dbtRunner
 from pipelines.administrative_boundary import download_administrative_boundary
 from pipelines.future_population import download_future_population
 from pipelines.mt_city import extract_mt_city
+from pipelines.railway import download_railway
 
 logger = logging.getLogger("pipelines")
 
@@ -43,11 +45,15 @@ def main():
     extract_mt_city("data/mt_city")
 
     # 3. 将来推計人口メッシュ (国土数値情報 1kmメッシュ R6推計)
-    logger.info("3/4: future_population (将来推計人口メッシュ)")
+    logger.info("3/5: future_population (将来推計人口メッシュ)")
     download_future_population("data/future_population")
 
-    # 4. dbt ビルド
-    logger.info("4/4: dbt build")
+    # 4. 鉄道データ (国土数値情報 N02 駅・路線)
+    logger.info("4/5: railway (鉄道データ)")
+    download_railway("data/railway")
+
+    # 5. dbt ビルド
+    logger.info("5/5: dbt build")
     dbt_build()
 
 

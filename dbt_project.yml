@@ -21,3 +21,8 @@ models:
         +materialized: table
       stg:
         +materialized: table
+    railway:
+      raw:
+        +materialized: table
+      stg:
+        +materialized: table
