@@ -4,7 +4,8 @@
 2. mt_city:                 市区町村マスタ取得 (ABR)
 3. future_population:       将来推計人口メッシュ取得 (1kmメッシュ R6推計)
 4. railway:                 鉄道データ取得 (N02 駅・路線)
-5. dbt:                     dbt ビルド
+5. medical:                 医療機関データ取得 (P04)
+6. dbt:                     dbt ビルド
 """
 
 import logging
@@ -13,6 +14,7 @@ from dbt.cli.main import dbtRunner
 
 from pipelines.administrative_boundary import download_administrative_boundary
 from pipelines.future_population import download_future_population
+from pipelines.medical import download_medical
 from pipelines.mt_city import extract_mt_city
 from pipelines.railway import download_railway
 
@@ -37,23 +39,27 @@ def dbt_build():
 
 def main():
     # 1. 行政区域データ (国土数値情報 N03)
-    logger.info("1/4: administrative_boundary (行政区域データ)")
+    logger.info("1/6: administrative_boundary (行政区域データ)")
     download_administrative_boundary("data/administrative_boundary")
 
     # 2. 市区町村マスタ (アドレス・ベース・レジストリ)
-    logger.info("2/4: mt_city (市区町村マスタ)")
+    logger.info("2/6: mt_city (市区町村マスタ)")
     extract_mt_city("data/mt_city")
 
     # 3. 将来推計人口メッシュ (国土数値情報 1kmメッシュ R6推計)
-    logger.info("3/5: future_population (将来推計人口メッシュ)")
+    logger.info("3/6: future_population (将来推計人口メッシュ)")
     download_future_population("data/future_population")
 
     # 4. 鉄道データ (国土数値情報 N02 駅・路線)
-    logger.info("4/5: railway (鉄道データ)")
+    logger.info("4/6: railway (鉄道データ)")
     download_railway("data/railway")
 
-    # 5. dbt ビルド
-    logger.info("5/5: dbt build")
+    # 5. 医療機関データ (国土数値情報 P04)
+    logger.info("5/6: medical (医療機関データ)")
+    download_medical("data/medical")
+
+    # 6. dbt ビルド
+    logger.info("6/6: dbt build")
     dbt_build()
 
 
