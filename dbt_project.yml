@@ -26,3 +26,8 @@ models:
         +materialized: table
       stg:
         +materialized: table
+    facility:
+      raw:
+        +materialized: table
+      stg:
+        +materialized: table
