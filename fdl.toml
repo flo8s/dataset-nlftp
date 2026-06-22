@@ -14,7 +14,7 @@ public_url = "http://localhost:4001"
 
 [meta]
 license = "国土数値情報利用規約"
-license_url = "https://nlftp.mlit.go.jp/ksj/other/yakkan.html"
+license_url = "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
 title = "国土数値情報"
 description = """国土交通省「国土数値情報ダウンロードサイト」(nlftp.mlit.go.jp) から取得した GIS データ。
 地形、土地利用、公共施設などの国土に関する基礎的な情報を提供。"""
