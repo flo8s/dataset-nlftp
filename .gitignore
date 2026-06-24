@@ -23,4 +23,5 @@ data/mt_city/*.csv
 data/future_population/
 data/railway/
 data/medical/
+data/school/
 *.duckdb
